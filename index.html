@@ -1,13 +1,76 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<html>
+<head>
+  <title>Weather Web</title>
+  <style>
+    #app {
+      display: inline-block;
+      padding: 10px;
+      font-size: x-large;
+      background-color: lightblue;
+      
+    }
+    
+    #app div {
+      padding: 20px;
+      background-color: lightgreen;
+      font-weight: bold;
+    }
+    
+  </style>
+</head>
+<body>
+
+<h1>Weather Web</h1>
+
+<div id="app">
+  <div id="search">
+   <input type="text" v-on:input="inpCount++" placeholder="Search">
+  </div>
+  <div v-show="showDiv">
+  	<h1>{{ message }}</h1>
+  	<h3>Maribor</h3>
+  	<h4>_____________________ Max: 35°C</h4>
+  	<h4>_____________________ Min: 17°C</h4>
+  </div>
+</div>
+
+<div id="app">
+  <h3>Temperature</h3>
+  <h4>_______________________________</h4>
+  
+  <h4>_______________________________</h4>
+</div>
+
+<div id="app">
+  <h3>Forecast</h3>
+  <h4>_______________________________</h4>
+  
+  <h4>_______________________________</h4>
+</div>
+
+<div id="app">
+  <h3>3-Day Forecast</h3>
+  <h4>_______________________________</h4>
+  
+  <h4>_______________________________</h4>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+  const app = Vue.createApp({
+   data() {
+    return {
+     message: "27°C"
+     //showDiv: true
+    }
+   }
+  })
+  
+  app.mount('#app')
+
+</script>
+
+</body>
 </html>
