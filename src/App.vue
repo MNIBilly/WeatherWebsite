@@ -1,17 +1,23 @@
 
-<script setup>
-import { ref } from 'vue'
-
-const text = ref('')
-
-function onInput(e) {
-  text.value = e.target.value
-}
-</script>
-
 <template>
-  <h1>Hello World!</h1>
+  <div>
+    <h4>Date and search bar</h4>
+    <p>placeholder</p>
+    <slot.comp><h3>27°C</h3></slot.comp>
+  </div>
 
-  <input :value="text" @input="onInput" placeholder="Type here">
-  <p>{{ text }}</p>
 </template>
+
+<script></script>
+
+<style>
+  p {
+  width: 200px;
+  }
+  #app div {
+    border: black 1px;
+    margin: 10px;
+    padding: 10px;
+    display: inline-block;
+  }
+</style>   
