@@ -6,8 +6,8 @@
     <style>
         /* Stili base per l'intera pagina */
         body {
+            background-image: url("https://webgradients.com/public/webgradients_png/035%20Itmeo%20Branding.png");
             font-family: Arial, sans-serif; /* Imposta il font principale */
-            background-color: #2aecec; /* Colore di sfondo della pagina (un azzurro-verde chiaro) */
             display: flex; /* Utilizza Flexbox per centrare il contenuto */
             justify-content: center; /* Centra orizzontalmente */
             align-items: flex-start; /* Allinea in alto verticalmente */
@@ -30,7 +30,7 @@
 
         /* Stile generale per tutte le "carte" meteo con effetto vetro (glassmorphism) */
         .weather-card {
-            background-color: #d1ffec65; /* Colore di sfondo semi-trasparente (verde acqua con alpha) */
+            background-color: #f3fffa3b; /* Colore di sfondo semi-trasparente (verde acqua con alpha) */
             border-radius: 15px; /* Bordi arrotondati */
             padding: 25px; /* Spazio interno */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombra leggera per dare profondità */
@@ -137,8 +137,17 @@
         /* Stili per i paragrafi all'interno degli elementi */
         .hourly-item p, .detail-item p, .day-item p { 
             margin: 5px 0; /* Margine verticale */
-            font-size: 0.9em; /* Dimensione del font leggermente più piccola */
+            font-size: 0.9; /* Dimensione del font leggermente più piccola */
         } 
+
+        div {
+            transition: transform 1s ease-in-out; /* Aggiunge un fluida trsnzn */
+        }
+
+        div:hover {
+          transform: scale(1.05); /* Aumenta la grandezza del 5 prcnt */
+        }
+
         
     </style>
 </head>
@@ -153,6 +162,7 @@
             </div>
             <div class="current-weather">
                 <h1>27°C</h1>
+                <img src="https://cdn-icons-png.flaticon.com/512/9055/9055356.png" alt="Sunny" width="50" height="50">
                 <h3>Maribor</h3>
                 <h4>Max: 35°C</h4>
                 <h4>Min: 17°C</h4>
@@ -161,104 +171,127 @@
 
         <div id="temperature-trend" class="weather-card">
             <h3>Temperature Trend</h3>
-            
         </div>
         
         <div id="hourly-forecast" class="weather-card">
             <div class="hourly-item">
                 <p>00:00</p>
+                <img src="https://static.vecteezy.com/system/resources/previews/019/899/719/non_2x/simple-moon-icon-png.png" alt="Night" width="50" height="50">
                 <p>27°C</p>
             </div>
             <div class="hourly-item">
                 <p>01:00</p>
+                <img src="https://static.vecteezy.com/system/resources/previews/019/899/719/non_2x/simple-moon-icon-png.png" alt="Night" width="50" height="50">
                 <p>35°C</p>
             </div>
             <div class="hourly-item">
                 <p>02:00</p>
+                <img src="https://static.vecteezy.com/system/resources/previews/019/899/719/non_2x/simple-moon-icon-png.png" alt="Night" width="50" height="50">
                 <p>26°C</p>
             </div>
             <div class="hourly-item">
                 <p>03:00</p>
+                <img src="https://static.vecteezy.com/system/resources/previews/019/899/719/non_2x/simple-moon-icon-png.png" alt="Night" width="50" height="50">
                 <p>23°C</p>
             </div>
             <div class="hourly-item">
                 <p>04:00</p>
+                <img src="https://static.vecteezy.com/system/resources/previews/019/899/719/non_2x/simple-moon-icon-png.png" alt="Night" width="50" height="50">
                 <p>19°C</p>
             </div>
             <div class="hourly-item">
                 <p>05:00</p>
+                <img src="https://static.vecteezy.com/system/resources/previews/019/899/719/non_2x/simple-moon-icon-png.png" alt="Night" width="50" height="50">
                 <p>17°C</p>
             </div>
             <div class="hourly-item">
                 <p>06:00</p>
+                <img src="https://static.vecteezy.com/system/resources/previews/019/899/719/non_2x/simple-moon-icon-png.png" alt="Night" width="50" height="50">
                 <p>27°C</p>
             </div>
             <div class="hourly-item">
                 <p>07:00</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/9055/9055356.png" alt="Sunny" width="50" height="50">
                 <p>35°C</p>
             </div>
             <div class="hourly-item">
                 <p>08:00</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/9055/9055356.png" alt="Sunny" width="50" height="50">
                 <p>26°C</p>
             </div>
             <div class="hourly-item">
                 <p>09:00</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/9055/9055356.png" alt="Sunny" width="50" height="50">
                 <p>23°C</p>
             </div>
             <div class="hourly-item">
                 <p>10:00</p>
+                <img src="https://cdn.iconscout.com/icon/free/png-256/free-cloud-rain-icon-download-in-svg-png-gif-file-formats--rainny-forecast-weather-pack-nature-icons-3219522.png?f=webp" alt="Rainy" width="50" height="50">
                 <p>19°C</p>
             </div>
             <div class="hourly-item">
                 <p>11:00</p>
+                <img src="https://cdn.iconscout.com/icon/free/png-256/free-cloud-rain-icon-download-in-svg-png-gif-file-formats--rainny-forecast-weather-pack-nature-icons-3219522.png?f=webp" alt="Rainy" width="50" height="50">
                 <p>17°C</p>
             </div>
             <div class="hourly-item">
                 <p>12:00</p>
+                <img src="https://cdn.iconscout.com/icon/free/png-256/free-cloud-rain-icon-download-in-svg-png-gif-file-formats--rainny-forecast-weather-pack-nature-icons-3219522.png?f=webp" alt="Rainy" width="50" height="50">
                 <p>27°C</p>
             </div>
             <div class="hourly-item">
                 <p>13:00</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/9055/9055356.png" alt="Sunny" width="50" height="50">
                 <p>35°C</p>
             </div>
             <div class="hourly-item">
                 <p>14:00</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/9055/9055356.png" alt="Sunny" width="50" height="50">
                 <p>26°C</p>
             </div>
             <div class="hourly-item">
                 <p>15:00</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/9055/9055356.png" alt="Sunny" width="50" height="50">
                 <p>23°C</p>
             </div>
             <div class="hourly-item">
                 <p>16:00</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/9055/9055356.png" alt="Sunny" width="50" height="50">
                 <p>19°C</p>
             </div>
             <div class="hourly-item">
                 <p>17:00</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/9055/9055356.png" alt="Sunny" width="50" height="50">
                 <p>17°C</p>
             </div>
             <div class="hourly-item">
                 <p>18:00</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/9055/9055356.png" alt="Sunny" width="50" height="50">
                 <p>27°C</p>
             </div>
             <div class="hourly-item">
                 <p>19:00</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/9055/9055356.png" alt="Sunny" width="50" height="50">
                 <p>35°C</p>
             </div>
             <div class="hourly-item">
                 <p>20:00</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/9055/9055356.png" alt="Sunny" width="50" height="50">
                 <p>26°C</p>
             </div>
             <div class="hourly-item">
                 <p>21:00</p>
+                <img src="https://static.vecteezy.com/system/resources/previews/019/899/719/non_2x/simple-moon-icon-png.png" alt="Night" width="50" height="50">
                 <p>23°C</p>
             </div>
             <div class="hourly-item">
                 <p>22:00</p>
+                <img src="https://static.vecteezy.com/system/resources/previews/019/899/719/non_2x/simple-moon-icon-png.png" alt="Night" width="50" height="50">
                 <p>19°C</p>
             </div>
             <div class="hourly-item">
                 <p>23:00</p>
+                <img src="https://static.vecteezy.com/system/resources/previews/019/899/719/non_2x/simple-moon-icon-png.png" alt="Night" width="50" height="50">
                 <p>17°C</p>
             </div>
         </div>
@@ -286,19 +319,20 @@
             <h3>3-Day Forecast</h3>
             <div class="day-item">
                 <p>Tue</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/9055/9055356.png" alt="Sunny" width="50" height="50">
                 <p>27°C / 19°C</p>
             </div>
             <div class="day-item">
                 <p>Wed</p>
-                <p>27°C / 19°C</p>
+                <img src="https://cdn.iconscout.com/icon/free/png-256/free-cloud-rain-icon-download-in-svg-png-gif-file-formats--rainny-forecast-weather-pack-nature-icons-3219522.png?f=webp" alt="Rainy" width="50" height="50">
+                <p>35°C / 17°C</p>
             </div>
             <div class="day-item">
                 <p>Thu</p>
-                <p>27°C / 19°C</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/9055/9055356.png" alt="Sunny" width="50" height="50">
+                <p>23°C / 19°C</p>
             </div>
         </div>
-
     </div>
-
 </body>
 </html>
