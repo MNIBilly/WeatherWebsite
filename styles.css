@@ -80,9 +80,9 @@ body {
 }
 #temperature-trend { 
     grid-area: 1 / 2 / 2 / 3;
-    justify-content: center; /* Centra il contenuto verticalmente */
-    align-items: center; /* Centra il contenuto orizzontalmente */
-    text-align: center; /* Centra il testo */
+    justify-content: flex-start; /* Changed from center to flex-start */
+    align-items: center; /* Still center horizontally */
+    text-align: center; /* Still center text */
 }
 #hourly-forecast { 
     grid-area: 2 / 1 / 3 / 2;
