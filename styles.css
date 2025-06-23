@@ -16,14 +16,14 @@ body {
 }
 
 :root {
-    --moon-icon: url("https://static.vecteezy.com/system/resources/previews/019/899/719/non_2x/simple-moon-icon-png.png"); /* Icona Luna */
-    --sunny-icon: url("https://cdn-icons-png.flaticon.com/512/9055/9055356.png"); /* Icona Sole */
-    --rainy-icon: url("https://cdn.iconscout.com/icon/free/png-256/free-cloud-rain-icon-download-in-svg-png-gif-file-formats--rainny-forecast-weather-pack-nature-icons-3219522.png?f=webp"); /* Icona Pioggia */
+    --moon-icon: url("https://static.vecteezy.com/system/resources/previews/019/899/719/non_2x/simple-moon-icon-png.png");
+    --sunny-icon: url("https://cdn-icons-png.flaticon.com/512/9055/9055356.png");
+    --rainy-icon: url("https://cdn.iconscout.com/icon/free/png-256/free-cloud-rain-icon-download-in-svg-png-gif-file-formats--rainny-forecast-weather-pack-nature-icons-3219522.png?f=webp");
 }
 
 /* NUOVO STILE per l'intestazione della pagina */
 #page-header {
-    display: flex; /* Abilita Flexbox */
+    display: flex;
     justify-content: space-between; /* Sposta gli elementi alle estremità */
     align-items: center; /* Allinea verticalmente al centro */
     width: 100%; /* Occupa tutta la larghezza disponibile */
@@ -53,7 +53,7 @@ body {
     display: grid; /* Abilita il layout a griglia */
     grid-template-columns: 2fr 1fr; /* Definisce due colonne: la prima è il doppio della seconda */
     grid-template-rows: auto auto auto; /* Definisce tre righe, con altezza automatica in base al contenuto */
-    gap: 15px; /* RIDOTTO: Meno spazio tra le celle della griglia */
+    gap: 15px; /* Meno spazio tra le celle della griglia */
     max-width: 1200px; /* Larghezza massima del contenitore */
     width: 100%; /* Occupa il 100% della larghezza disponibile, fino al max-width */
     /* Nessun padding sul main-container stesso, è gestito dalle schede */
@@ -63,7 +63,7 @@ body {
 .weather-card {
     background-color: #95ffd344; /* Colore di sfondo semi-trasparente (verde acqua con alpha) */
     border-radius: 15px; /* Bordi arrotondati */
-    padding: 20px; /* RIDOTTO ANCORA: Meno spazio interno per tutte le carte */
+    padding: 20px; /* Meno spazio interno per tutte le carte */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombra leggera per dare profondità */
     backdrop-filter: blur(10px); /* Applica un effetto sfocato allo sfondo dietro l'elemento (effetto vetro) */
     border: 1px solid rgba(121, 121, 121, 0.2); /* Bordo sottile e leggermente trasparente */
