@@ -15,4 +15,4 @@ Type these commands one at a time:
  - npm run build
  - npm run dev
    
-To the right of "Local:" you should find the link with its port
+To the right of "Local:" you should find the link with its port, copy it and paste it into your browser
