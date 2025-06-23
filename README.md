@@ -10,7 +10,7 @@ Download the entire project.
 Go to a command prompt or windows powershell (you need to run them as administrator).
 
 Type these commands one at a time:
- - cd C:\Windows\System32\WeatherProject
+ - cd ...\type\your\path\WeatherProject
  - npm install
  - npm run build
  - npm run dev
