@@ -29,7 +29,18 @@ function fetchWeatherData(loc) {
 }
 
 function updateForecastData(){
+    
 }
+
+/* Event Listener per trovare le previsioni meteo in base alla posizione inserita */
+document.querySelector(".location-form").addEventListener("submit", (event)=>{
+  event.preventDefault();
+  const searchLocation = document.getElementById("search-input").value.trim();
+  if(searchLocation) {
+    fetchWeatherData(searchLocation);
+  }
+})
+
 
 /* Geolocalizzazione per prendere la posizione dell'utente */
 navigator.geolocation.getCurrentPosition(
