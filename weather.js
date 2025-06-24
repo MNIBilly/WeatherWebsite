@@ -5,7 +5,7 @@ const dateObj = new Date();
 const getDayName = (dayType, dateVal = dateObj) => dateVal.toLocaleDateString('en-US', { weekday: dayType });
 
 
-/* Fetch weather data dall'API */
+/* Fetch weather data dell'API */
 function fetchWeatherData(loc) {
     const apiUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${loc}&aqi=no`;
 
@@ -14,21 +14,21 @@ function fetchWeatherData(loc) {
     .then(data => {
         console.log(data);
         // Aggiorna i dati correnti
-        document.querySelector('.current-date').textContent = `${data.location.localtime}`;
+        document.querySelector('.current-date').textContent = `${data.current.last_updated}`;
         document.querySelector('.location').textContent = `${data.location.name}`;
-        document.querySelector('.current-temperature').textContent = `${data.current.temp_c}°C`;
-        document.querySelector('.weather-icon').src = `${data.current.condition.icon}`;
+        /* document.querySelector('.max-temperature').textContent = `${data.forecast.forecastday[2].maxtemp_C}°C`; */
+        document.querySelector('.current-temperature').textContent = `${Math.ceil(data.current.temp_c)}°C`;
+        document.querySelector('.weather-icon').src = `${data.current.isDay ? 'https://cdn.weatherapi.com/weather/64x64/day/' : 'https://cdn.weatherapi.com/weather/64x64/night/'}${data.current.condition.code}.png`;
         document.querySelector('.precipitation').textContent = `${data.current.precip_mm} mm`;
         document.querySelector('.humidity').textContent = `${data.current.humidity}%`;
         document.querySelector('.uv-index').textContent = `${data.current.uv}`;
         document.querySelector('.wind-speed').textContent = `${data.current.wind_kph} km/h`;
-
-        updateForecastData(data.forecast);
+        
+        /* updateForecastData(); */
       })
 }
 
-function updateForecastData(forecastVal){
-
+function updateForecastData(){
 }
 
 /* Geolocalizzazione per prendere la posizione dell'utente */
@@ -39,5 +39,5 @@ navigator.geolocation.getCurrentPosition(
     const loc = `${lat},${lon}`;
     fetchWeatherData(loc);
   }, error => {
-    console.error('Error getting location:', error);
+    console.error('Location error:', error);
   })
