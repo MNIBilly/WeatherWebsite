@@ -1,6 +1,8 @@
 <!DOCTYPE html>
  <html>
+  
   <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <title>Weather Web</title>
     <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/9055/9055356.png">
     <meta charset="UTF-8">
@@ -8,13 +10,14 @@
     <link rel="stylesheet" href="styles.css"> 
   </head>
   <body>
+
     <div id="page-header">
+        
         <div class="date-navigation">
-            <button class="date-nav-button" id="prev-date">&lt;</button>
-            <span class="current-date">03 Settembre 2007</span> <button class="date-nav-button" id="next-date">&gt;</button>
         </div>
         <div class="location-container">
          <form class="location-form">
+            <span class="current-date">03 Settembre 2007</span>
            <input id="search-input" type="text" placeholder="Enter location">
            <button class="location-button"><span>Change location</span></button>
          </form>
@@ -36,127 +39,129 @@
 
         <div id="temperature-trend" class="weather-card">
             <h3>Temperature Trend</h3>
+            <canvas id="temperatureChart" style="width:100%;max-width:450px"></canvas>
+            
         </div>
         <div id="hourly-forecast" class="weather-card">
             <div class="hourly-item">
                 <p>00:00</p>
                 <div class="weather-icon icon-moon"></div>
-                <p>27°C</p>
+                <p class = "hour0">27°C</p>
             </div>
             <div class="hourly-item">
                 <p>01:00</p>
                 <div class="weather-icon icon-moon"></div>
-                <p>35°C</p>
+                <p class = "hour1">35°C</p>
             </div>
             <div class="hourly-item">
                 <p>02:00</p>
                 <div class="weather-icon icon-moon"></div>
-                <p>26°C</p>
+                <p class = "hour2">26°C</p>
             </div>
             <div class="hourly-item">
                 <p>03:00</p>
                 <div class="weather-icon icon-moon"></div>
-                <p>23°C</p>
+                <p class = "hour3">23°C</p>
             </div>
             <div class="hourly-item">
                 <p>04:00</p>
                 <div class="weather-icon icon-moon"></div>
-                <p>19°C</p>
+                <p class = "hour4">19°C</p>
             </div>
             <div class="hourly-item">
                 <p>05:00</p>
                 <div class="weather-icon icon-moon"></div>
-                <p>17°C</p>
+                <p class = "hour5">17°C</p>
             </div>
             <div class="hourly-item">
                 <p>06:00</p>
                 <div class="weather-icon icon-moon"></div>
-                <p>27°C</p>
+                <p class = "hour6">27°C</p>
             </div>
             <div class="hourly-item">
                 <p>07:00</p>
                 <div class="weather-icon icon-sunny"></div>
-                <p>35°C</p>
+                <p class = "hour7">35°C</p>
             </div>
             <div class="hourly-item">
                 <p>08:00</p>
                 <div class="weather-icon icon-sunny"></div>
-                <p>26°C</p>
+                <p class = "hour8">26°C</p>
             </div>
             <div class="hourly-item">
                 <p>09:00</p>
                 <div class="weather-icon icon-sunny"></div>
-                <p>23°C</p>
+                <p class = "hour9">23°C</p>
             </div>
             <div class="hourly-item">
                 <p>10:00</p>
                 <div class="weather-icon icon-rainy"></div>
-                <p>19°C</p>
+                <p class = "hour10">19°C</p>
             </div>
             <div class="hourly-item">
                 <p>11:00</p>
                 <div class="weather-icon icon-rainy"></div>
-                <p>17°C</p>
+                <p class = "hour11">17°C</p>
             </div>
             <div class="hourly-item">
                 <p>12:00</p>
                 <div class="weather-icon icon-rainy"></div>
-                <p>27°C</p>
+                <p class = "hour12">27°C</p>
             </div>
             <div class="hourly-item">
                 <p>13:00</p>
                 <div class="weather-icon icon-sunny"></div>
-                <p>35°C</p>
+                <p class = "hour13">35°C</p>
             </div>
             <div class="hourly-item">
                 <p>14:00</p>
                 <div class="weather-icon icon-sunny"></div>
-                <p>26°C</p>
+                <p class = "hour14">26°C</p>
             </div>
             <div class="hourly-item">
                 <p>15:00</p>
                 <div class="weather-icon icon-sunny"></div>
-                <p>23°C</p>
+                <p class = "hour15">23°C</p>
             </div>
             <div class="hourly-item">
                 <p>16:00</p>
                 <div class="weather-icon icon-sunny"></div>
-                <p>19°C</p>
+                <p class = "hour16">19°C</p>
             </div>
             <div class="hourly-item">
                 <p>17:00</p>
                 <div class="weather-icon icon-sunny"></div>
-                <p>17°C</p>
+                <p class = "hour17">17°C</p>
             </div>
             <div class="hourly-item">
                 <p>18:00</p>
                 <div class="weather-icon icon-sunny"></div>
-                <p>27°C</p>
+                <p class = "hour18">27°C</p>
             </div>
             <div class="hourly-item">
                 <p>19:00</p>
                 <div class="weather-icon icon-sunny"></div>
-                <p>35°C</p>
+                <p class = "hour19">35°C</p>
             </div>
             <div class="hourly-item">
                 <p>20:00</p>
                 <div class="weather-icon icon-sunny"></div>
-                <p>26°C</p>
+                <p class = "hour20">26°C</p>
             </div>
             <div class="hourly-item">
                 <p>21:00</p>
                 <div class="weather-icon icon-moon"></div>
-                <p>23°C</p>
+                <p class = "hour21">23°C</p>
             </div>
             <div class="hourly-item">
                 <p>22:00</p>
                 <div class="weather-icon icon-moon"></div>
-                <p>19°C</p>
+                <p class = "hour22">19°C</p>
             </div>
             <div class="hourly-item">
                 <p>23:00</p>
                 <div class="weather-icon icon-moon"></div>
-                <p>17°C</p>
+                <p class = "hour0">17°C</p>
             </div>
         </div>
 
@@ -182,19 +187,19 @@
         <div id="day-forecast" class="weather-card">
             <h3>3-Day Forecast</h3>
             <div class="day-item">
-                <p>Tue</p>
+                <p class="dayF1">???</p>
                 <div class="weather-icon icon-sunny"></div>
-                <p>27°C / 19°C</p>
+                <p class="Max-Min1">0°C / 0°C</p>
             </div>
             <div class="day-item">
-                <p>Wed</p>
+                <p class="dayF2">???</p>
                 <div class="weather-icon icon-rainy"></div>
-                <p>35°C / 17°C</p>
+                <p class="Max-Min2">0°C / 0°C</p>
             </div>
             <div class="day-item">
-                <p>Thu</p>
+                <p class="dayF3">???</p>
                 <div class="weather-icon icon-sunny"></div>
-                <p>23°C / 19°C</p>
+                <p class="Max-Min3">0°C / 0°C</p>
             </div>
         </div>
     </div>
