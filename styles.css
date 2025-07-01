@@ -23,14 +23,20 @@ body {
 
 /* NUOVO STILE per l'intestazione della pagina */
 #page-header {
-    display: flex;
-    justify-content: space-between; /* Sposta gli elementi alle estremità */
-    align-items: center; /* Allinea verticalmente al centro */
-    width: 100%; /* Occupa tutta la larghezza disponibile */
-    max-width: 1200px; /* Allineato con la larghezza massima del main-container */
-    padding: 10px 20px; /* Padding interno */
-    margin-bottom: 20px; /* Spazio sotto l'intestazione prima del main-container */
-    box-sizing: border-box; /* Include padding nel calcolo della larghezza */
+    display: flex; /* Utilizza Flexbox per l'allineamento */
+    flex-direction: column;     /* Imposta la direzione in colonna per gli elementi */
+    align-items: center; /* Centra gli elementi orizzontalmente */
+    justify-content: center; /* Centra gli elementi verticalmente */
+    width: 100%; /* Occupa il 100% della larghezza disponibile */
+    max-width: 1200px; /* Larghezza massima per l'intestazione */
+    padding: 20px; /* Padding per distanziare il contenuto dai bordi */
+    margin-bottom: 20px; /* Margine inferiore per distanziare dallo contenuto */
+    box-sizing: border-box; /* Include padding e bordo nella dimensione totale */
+    background-color: rgba(0, 0, 0, 0.253); /* Sfondo semi-trasparente per l'intestazione */
+    backdrop-filter: blur(10px); /* Applica un effetto sfocato allo sfondo dietro l'intestazione */
+    border-radius: 15px; /* Bordi arrotondati per l'intestazione */
+    box-shadow: 0 64px 256px rgba(0, 0, 0, 0.2); /* Ombra leggera per dare profondità all'intestazione */
+    gap: 10px; /* Spazio tra gli elementi dell'intestazione */
 }
 
 #page-header input {
@@ -46,7 +52,34 @@ body {
 #page-header input::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
+/* Stili per il campo di ricerca */
+.location-button {
+    width: 100px;
+    padding: 8px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: rgb(255, 255, 255);
+    font-size: 0.7em;
+    cursor: pointer; /* Cambia il cursore per indicare che è cliccabile */
+    transition: background-color 0.3s ease; /* Transizione per l'effetto hover */
+    visibility: none;
+}
+.location-button:hover {
+    background-color: rgba(255, 255, 255, 0.4); /* Colore di sfondo più chiaro al passaggio del mouse */
+}
+.location-container {
+    display: flex;
+    justify-content: space-between; /* Sposta gli elementi alle estremità */
+    align-items: center; /* Allinea verticalmente al centro */
+}
 
+.location-form {
+    display: flex; /* Utilizza Flexbox per l'allineamento */
+    align-items: center; /* Allinea verticalmente al centro */
+    gap: 10px; /* Spazio tra il campo di input e il pulsante */
+    margin-right: 20px; /* Margine a destra per distanziare dal bordo */
+}
 
 /* Contenitore principale che definisce la griglia per tutti i pannelli */
 #main-container {
@@ -59,7 +92,7 @@ body {
     /* Nessun padding sul main-container stesso, è gestito dalle schede */
 }
 
-/* Stile generale per tutte le "carte" meteo con effetto vetro (glassmorphism) */
+/* Stile generale per tutte le "carte" meteo con effetto vetro */
 .weather-card {
     background-color: #95ffd344; /* Colore di sfondo semi-trasparente (verde acqua con alpha) */
     border-radius: 15px; /* Bordi arrotondati */
@@ -76,13 +109,12 @@ body {
 /* Posizionamento specifico di ogni pannello all'interno della griglia principale usando grid-area */
 #main-weather-info { 
     grid-area: 1 / 1 / 2 / 2;
-    /* Rimosso justify-content: space-between; in quanto header-top non è più un figlio diretto */
 }
 #temperature-trend { 
     grid-area: 1 / 2 / 2 / 3;
-    justify-content: flex-start; /* Changed from center to flex-start */
-    align-items: center; /* Still center horizontally */
-    text-align: center; /* Still center text */
+    justify-content: flex-start; 
+    align-items: center; 
+    text-align: center;
 }
 #hourly-forecast { 
     grid-area: 2 / 1 / 3 / 2;
@@ -108,12 +140,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2); 
     backdrop-filter: blur(5px); /* Blur */
 }
-
-#hourly-forecast::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(255, 255, 255, 0.5); /* più visibile */
-}
-
-
+    
 #weather-details { 
     grid-area: 3 / 1 / 4 / 2;
     display: grid;
@@ -173,15 +200,15 @@ body {
 /* Stile per il contenitore di Max e Min */
 .max-min-info {
     display: flex; /* Trasforma in un contenitore flexbox */
-    gap: 10px; /* Spazio tra Max e Min */
-    margin-top: 5px; /* Aggiungi un piccolo margine superiore se necessario */
+    gap: 20px; /* Spazio tra Max e Min */
+    margin-top: 50px; /* Aggiungi un piccolo margine superiore se necessario */
     margin-bottom: 5px; /* Aggiungi un piccolo margine inferiore se necessario */
 }
 
 .current-weather h4 { 
     font-size: 0.9em;
-    margin: 0; /* Rimuovi i margini predefiniti degli h4 per un controllo migliore con il gap del genitore */
-    text-align: left; /* Mantieni l'allineamento a sinistra per il testo all'interno di ogni h4 */
+    margin: 0; /* Rimuove i margini predefiniti degli h4 per un controllo migliore con il gap del genitore */
+    text-align: left; /* Mantiene l'allineamento a sinistra per il testo all'interno di ogni h4 */
 }
 
 /* Stili specifici per il titolo del pannello "Temperature Trend" */
@@ -206,7 +233,6 @@ body {
 }
 .hourly-item { 
     min-width: 70px; /* Larghezza minima ancora più piccola per gli elementi orari */
-    flex-shrink: 0;
 }
 
 /* Stili per i paragrafi all'interno degli elementi */
@@ -216,17 +242,22 @@ body {
 }
 
 /* Stili per i pulsanti di navigazione data */
-.date-navigation button {
+.current-date {
     background: none;
     border: none;
     color: white;
     font-size: 1.1em; /* Dimensione del font adattata */
     cursor: pointer;
     padding: 0 4px; /* Padding leggermente ridotto */
+    position: relative;
 }
 
-/* Stili per la data corrente */
-#current-date {
-    font-size: 0.95em; /* Dimensione del font adattata per la data corrente */
-    margin: 0 4px; /* Margine adattato per la data corrente */
+#temperatureChart {
+    border-radius: 10px;
+    padding: 8px 10px; /* Padding ridotto per gli elementi all'interno delle carte */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
