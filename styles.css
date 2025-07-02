@@ -261,3 +261,28 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.weather-icon.icon-sunny {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/869/869869.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto;
+}
+.weather-icon.icon-moon {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/869/8698692.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto;
+}
+.weather-icon.icon-rainy {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/414/414974.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto;
+}
