@@ -10,7 +10,7 @@ let temperatureChartInstance = null; // Variabile globale per il grafico
 
 // Fetch weather data dell'API */
 function fetchWeatherData(loc) {
-    const apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${loc}&days=1&aqi=no`;
+    const apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${loc}&days=5&aqi=no`;
 
     // Controlla se l'API è raggiungibile
     fetch(apiUrl)
@@ -23,29 +23,25 @@ function fetchWeatherData(loc) {
         const hours = data.forecast.forecastday[0].hour;
         const hourlyItems = document.querySelectorAll('.hourly-item');
         hourlyItems.forEach((item, idx) => {
-            if (hours[idx]) {
-                // Aggiorna ora
-                item.querySelector('p').textContent = hours[idx].time.split(' ')[1].slice(0,5);
-                // Aggiorna icona
-                const iconDiv = item.querySelector('.weather-icon');
-                iconDiv.className = 'weather-icon'; // classe per lo stile
-                iconDiv.innerHTML = ''; // pulisci eventuali immagini
-                const iconImg = document.createElement('img'); // crea un nuovo elemento immagine
-                iconImg.src = hours[idx].condition.icon; // imposta l'icona
-                iconImg.alt = hours[idx].condition.text; // imposta il testo alternativo
-                iconImg.style.width = '32px'; // imposta la larghezza
-                iconImg.style.height = '32px'; // imposta l'altezza
-                iconDiv.appendChild(iconImg); // aggiungi l'immagine all'elemento icona
-                // Aggiorna temperatura
-                const tempP = item.querySelectorAll('p')[1]; // seleziona il secondo paragrafo
-                // Controlla se esiste il paragrafo per la temperatura
-                if (tempP) {
-                    tempP.textContent = `${Math.round(hours[idx].temp_c)}°C`; // arrotonda la temperatura
-                }
-            }
-        });
+    if (hours[idx]) {
+        // Aggiorna ora
+        item.querySelector('p').textContent = hours[idx].time.split(' ')[1].slice(0,5);
+        // Aggiorna icona
+        const iconDiv = item.querySelector('.weather-icon');
+        iconDiv.className = 'weather-icon'; // classe per lo stile
+        iconDiv.innerHTML = ''; // pulisci eventuali immagini
+        const iconImg = document.createElement('img'); // crea un nuovo elemento immagine
+        let iconUrl = hours[idx].condition.icon;
+        if (iconUrl.startsWith('//')) {
+            iconUrl = 'https:' + iconUrl;
+        }
+        iconImg.src = iconUrl; // imposta l'icona
+        iconImg.alt = hours[idx].condition.text; // imposta il testo alternativo
+        iconImg.style.width = '32px'; // imposta la larghezza
+        iconImg.style.height = '32px'; // imposta l'altezza
+    }});
 
-        // --- AGGIORNA IL GRAFICO CON I DATI ORARI ---
+        // Aggiorna il grafico con dati orari
         const hourss = data.forecast.forecastday[0].hour;
         const tempLabels = hours.map(h => h.time.split(' ')[1].slice(0,5));
         const tempData = hours.map(h => Math.round(h.temp_c));
@@ -66,11 +62,15 @@ function fetchWeatherData(loc) {
             mainIconDiv.classList.add('icon-sunny');
         }
         // Aggiorna i dati correnti
-        document.querySelector('.current-date').textContent = `${data.current.last_updated}`;
+        document.querySelector('.current-date').textContent = `Last updated: ${data.current.last_updated}`;
+        document.querySelector('.day-of-week').textContent = getDayName('long', new Date(data.location.localtime));
         document.querySelector('.location').textContent = `${data.location.name}`;
-        document.querySelector('.max-temperature').textContent = `${data.forecast.forecastday[0].day.maxtemp_c}°C`;
-        document.querySelector('.min-temperature').textContent = `${data.forecast.forecastday[0].day.mintemp_c}°C`;
+        document.querySelector('.condition').textContent = `${data.current.condition.text}`;
+        document.querySelector('.max-temperature').textContent = `Max: ${data.forecast.forecastday[0].day.maxtemp_c}°C`;
+        document.querySelector('.min-temperature').textContent = `Min: ${data.forecast.forecastday[0].day.mintemp_c}°C`;
+        // Console log per debug
         console.log(data.forecast.forecastday[0].day.maxtemp_c);
+
         document.querySelector('.current-temperature').textContent = `${Math.ceil(data.current.temp_c)}°C`;
         document.querySelector('.weather-icon').src = `${data.current.condition.icon}`;
         document.querySelector('.precipitation').textContent = `${data.current.precip_mm} mm`;
@@ -79,28 +79,24 @@ function fetchWeatherData(loc) {
         document.querySelector('.wind-speed').textContent = `${data.current.wind_kph} km/h`;
         
         // Forecast per ogni ora
-        /* document.querySelector('.hour0').textContent = `${data.forecastday[0].hour[0].temp_c}°C`; */
-        // Nome e temperatura massima/minima del giorno successivo
         const tomorrow = new Date(data.location.localtime);
         tomorrow.setDate(tomorrow.getDate() + 1);
         document.querySelector('.dayF1').textContent = getDayName('long', tomorrow);
-        document.querySelector('.Max-Min1').textContent = `${data.forecast.forecastday[1].day.maxtemp_c}°C/${data.forecast.forecastday[1].day.mintemp_c}°C`;
-        const dayAfterTomorrow = new Date(tomorrow);
-        dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 1);
+
+        const dayAfterTomorrow = new Date(data.location.localtime);
+        dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2);
         document.querySelector('.dayF2').textContent = getDayName('long', dayAfterTomorrow);
-        document.querySelector('.Max-Min2').textContent = `${data.forecast.forecastday[2].day.maxtemp_c}°C/${data.forecast.forecastday[2].day.mintemp_c}°C`;
-        const twoDaysAfterTomorrow = new Date(tomorrow);
-        twoDaysAfterTomorrow.setDate(twoDaysAfterTomorrow.getDate() + 2);
+
+        const twoDaysAfterTomorrow = new Date(data.location.localtime);
+        twoDaysAfterTomorrow.setDate(twoDaysAfterTomorrow.getDate() + 3);
         document.querySelector('.dayF3').textContent = getDayName('long', twoDaysAfterTomorrow);
-        document.querySelector('.Max-Min3').textContent = `${data.forecast.forecastday[3].day.maxtemp_c}°C/${data.forecast.forecastday[3].day.mintemp_c}°C`;
-        /* updateForecastData(); */
         
+        for (let i = 1; i <= data.forecast.forecastday.length; i++) {
+            document.querySelector(`.Max-Min${i}`).textContent = `${data.forecast.forecastday[i].day.maxtemp_c}°C / ${data.forecast.forecastday[i].day.mintemp_c}°C`;
+        }
       })
 }
 
-function updateForecastData(){
-    
-}
 // Funzione per aggiornare il grafico della temperatura
 // Utilizza Chart.js per creare o aggiornare il grafico della temperatura
 function updateTemperatureChart(labels, data) {
