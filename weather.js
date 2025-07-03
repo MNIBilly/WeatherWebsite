@@ -23,25 +23,31 @@ function fetchWeatherData(loc) {
         const hours = data.forecast.forecastday[0].hour;
         const hourlyItems = document.querySelectorAll('.hourly-item');
         hourlyItems.forEach((item, idx) => {
-    if (hours[idx]) {
-        // Aggiorna ora
-        item.querySelector('p').textContent = hours[idx].time.split(' ')[1].slice(0,5);
-        // Aggiorna icona
-        const iconDiv = item.querySelector('.weather-icon');
-        iconDiv.className = 'weather-icon'; // classe per lo stile
-        iconDiv.innerHTML = ''; // pulisci eventuali immagini
-        const iconImg = document.createElement('img'); // crea un nuovo elemento immagine
-        let iconUrl = hours[idx].condition.icon;
-        if (iconUrl.startsWith('//')) {
-            iconUrl = 'https:' + iconUrl;
-        }
-        iconImg.src = iconUrl; // imposta l'icona
-        iconImg.alt = hours[idx].condition.text; // imposta il testo alternativo
-        iconImg.style.width = '32px'; // imposta la larghezza
-        iconImg.style.height = '32px'; // imposta l'altezza
-    }});
+            if (hours[idx]) {
+                // Aggiorna ora
+                item.querySelector('p').textContent = hours[idx].time.split(' ')[1].slice(0,5);
+                // Aggiorna icona
+                const iconDiv = item.querySelector('.weather-icon');
+                iconDiv.className = 'weather-icon'; // classe per lo stile
+                iconDiv.innerHTML = ''; // pulisci eventuali immagini
+                const iconImg = document.createElement('img'); // crea un nuovo elemento immagine
+                iconImg.src = hours[idx].condition.icon; // imposta l'icona
+                iconImg.alt = hours[idx].condition.text; // imposta il testo alternativo
+                iconImg.style.width = '32px'; // imposta la larghezza
+                iconImg.style.height = '32px'; // imposta l'altezza
+                iconDiv.appendChild(iconImg); // aggiungi l'immagine all'elemento icona
+                // Aggiorna temperatura
+                const tempP = item.querySelectorAll('p')[1]; // seleziona il secondo paragrafo
+                // Controlla se esiste il paragrafo per la temperatura
+                if (tempP) {
+                    tempP.textContent = `${Math.round(hours[idx].temp_c)}°C`; // arrotonda la temperatura
+                }
+            } else {
+                item.innerHTML = '<span class="error-message">Dati non disponibili</span>';
+            }
+        });
 
-        // Aggiorna il grafico con dati orari
+        // Aggiorna il grafico della temperatura
         const hourss = data.forecast.forecastday[0].hour;
         const tempLabels = hours.map(h => h.time.split(' ')[1].slice(0,5));
         const tempData = hours.map(h => Math.round(h.temp_c));
@@ -92,7 +98,7 @@ function fetchWeatherData(loc) {
         document.querySelector('.dayF3').textContent = getDayName('long', twoDaysAfterTomorrow);
         
         for (let i = 1; i <= data.forecast.forecastday.length; i++) {
-            document.querySelector(`.Max-Min${i}`).textContent = `${data.forecast.forecastday[i].day.maxtemp_c}°C / ${data.forecast.forecastday[i].day.mintemp_c}°C`;
+            document.querySelector(`.Max-Min${i}`).textContent = `${data.forecast.forecastday[i].maxtemp_c}°C / ${data.forecast.forecastday[i].mintemp_c}°C`;
         }
       })
 }
